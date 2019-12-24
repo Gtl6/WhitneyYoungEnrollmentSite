@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ name }}</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="/static/enroller/GeneralPage.css" />
+    <link rel="icon" href="/static/enroller/favicon.jpg">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $(".datepicker").datepicker();
+        });
+    </script>
+</head>
+<body>
+    <div class="page">
+        <div class="mainContent">
+    <b><u>Welcome to the {{ name }}!</u></b>
+    <br>
+    <br>
+
+    <form action="{% url 'updateData' %}" method="post">
+        {% csrf_token %}
+
+        {% for item in info %}
+            {% if item.0 == 'String Input' %}
+                <label><b>{{ item.1 }}</b></label>
+                <br>
+                <input type="text" value="{{ item.2 }}"  name="{{ item.1 }}">
+            {% endif %}
+
+            {% if item.0 == 'Radio List' %}
+                <b>{{ item.1 }}</b>
+                    {% for option in item.2 %}
+                        <br>
+                        <input  type="radio" {%  if item.3 == option %}checked{% endif %} name="{{ item.1 }}_radioList" value="{{ option }}">{{ option }}
+                    {% endfor %}
+            {% endif %}
+
+            {% if item.0 == 'Country List' %}
+                <b>{{ item.1 }}</b>
+                <br>
+                <select name="{{ item.1 }}">
+                    <option value=""></option>
+                    <option {% if item.2 == "AF" %}selected{% endif %} value="AF">Afghanistan</option>
+                    <option {% if item.2 == "AX" %}selected{% endif %} value="AX">Åland Islands</option>
+                    <option {% if item.2 == "AL" %}selected{% endif %} value="AL">Albania</option>
+                    <option {% if item.2 == "DZ" %}selected{% endif %} value="DZ">Algeria</option>
+                    <option {% if item.2 == "AS" %}selected{% endif %} value="AS">American Samoa</option>
+                    <option {% if item.2 == "AD" %}selected{% endif %} value="AD">Andorra</option>
+                    <option {% if item.2 == "AO" %}selected{% endif %} value="AO">Angola</option>
+                    <option {% if item.2 == "AI" %}selected{% endif %} value="AI">Anguilla</option>
+                    <option {% if item.2 == "AQ" %}selected{% endif %} value="AQ">Antarctica</option>
+                    <option {% if item.2 == "AG" %}selected{% endif %} value="AG">Antigua and Barbuda</option>
+                    <option {% if item.2 == "AR" %}selected{% endif %} value="AR">Argentina</option>
+                    <option {% if item.2 == "AM" %}selected{% endif %} value="AM">Armenia</option>
+                    <option {% if item.2 == "AW" %}selected{% endif %} value="AW">Aruba</option>
+                    <option {% if item.2 == "AU" %}selected{% endif %} value="AU">Australia</option>
+                    <option {% if item.2 == "AT" %}selected{% endif %} value="AT">Austria</option>
+                    <option {% if item.2 == "AZ" %}selected{% endif %} value="AZ">Azerbaijan</option>
+                    <option {% if item.2 == "BS" %}selected{% endif %} value="BS">Bahamas</option>
+                    <option {% if item.2 == "BH" %}selected{% endif %} value="BH">Bahrain</option>
+                    <option {% if item.2 == "BD" %}selected{% endif %} value="BD">Bangladesh</option>
+                    <option {% if item.2 == "BB" %}selected{% endif %} value="BB">Barbados</option>
+                    <option {% if item.2 == "BY" %}selected{% endif %} value="BY">Belarus</option>
+                    <option {% if item.2 == "BE" %}selected{% endif %} value="BE">Belgium</option>
+                    <option {% if item.2 == "BZ" %}selected{% endif %} value="BZ">Belize</option>
+                    <option {% if item.2 == "BJ" %}selected{% endif %} value="BJ">Benin</option>
+                    <option {% if item.2 == "BM" %}selected{% endif %} value="BM">Bermuda</option>
+                    <option {% if item.2 == "BT" %}selected{% endif %} value="BT">Bhutan</option>
+                    <option {% if item.2 == "BO" %}selected{% endif %} value="BO">Bolivia, Plurinational State of</option>
+                    <option {% if item.2 == "BQ" %}selected{% endif %} value="BQ">Bonaire, Sint Eustatius and Saba</option>
+                    <option {% if item.2 == "BA" %}selected{% endif %} value="BA">Bosnia and Herzegovina</option>
+                    <option {% if item.2 == "BW" %}selected{% endif %} value="BW">Botswana</option>
+                    <option {% if item.2 == "BV" %}selected{% endif %} value="BV">Bouvet Island</option>
+                    <option {% if item.2 == "BR" %}selected{% endif %} value="BR">Brazil</option>
+                    <option {% if item.2 == "IO" %}selected{% endif %} value="IO">British Indian Ocean Territory</option>
+                    <option {% if item.2 == "BN" %}selected{% endif %} value="BN">Brunei Darussalam</option>
+                    <option {% if item.2 == "BG" %}selected{% endif %} value="BG">Bulgaria</option>
+                    <option {% if item.2 == "BF" %}selected{% endif %} value="BF">Burkina Faso</option>
+                    <option {% if item.2 == "BI" %}selected{% endif %} value="BI">Burundi</option>
+                    <option {% if item.2 == "KH" %}selected{% endif %} value="KH">Cambodia</option>
+                    <option {% if item.2 == "CM" %}selected{% endif %} value="CM">Cameroon</option>
+                    <option {% if item.2 == "CA" %}selected{% endif %} value="CA">Canada</option>
+                    <option {% if item.2 == "CV" %}selected{% endif %} value="CV">Cape Verde</option>
+                    <option {% if item.2 == "KY" %}selected{% endif %} value="KY">Cayman Islands</option>
+                    <option {% if item.2 == "CF" %}selected{% endif %} value="CF">Central African Republic</option>
+                    <option {% if item.2 == "TD" %}selected{% endif %} value="TD">Chad</option>
+                    <option {% if item.2 == "CL" %}selected{% endif %} value="CL">Chile</option>
+                    <option {% if item.2 == "CN" %}selected{% endif %} value="CN">China</option>
+                    <option {% if item.2 == "CX" %}selected{% endif %} value="CX">Christmas Island</option>
+                    <option {% if item.2 == "CC" %}selected{% endif %} value="CC">Cocos (Keeling) Islands</option>
+                    <option {% if item.2 == "CO" %}selected{% endif %} value="CO">Colombia</option>
+                    <option {% if item.2 == "KM" %}selected{% endif %} value="KM">Comoros</option>
+                    <option {% if item.2 == "CG" %}selected{% endif %} value="CG">Congo</option>
+                    <option {% if item.2 == "CD" %}selected{% endif %} value="CD">Congo, the Democratic Republic of the</option>
+                    <option {% if item.2 == "CK" %}selected{% endif %} value="CK">Cook Islands</option>
+                    <option {% if item.2 == "CR" %}selected{% endif %} value="CR">Costa Rica</option>
+                    <option {% if item.2 == "CI" %}selected{% endif %} value="CI">Côte d'Ivoire</option>
+                    <option {% if item.2 == "HR" %}selected{% endif %} value="HR">Croatia</option>
+                    <option {% if item.2 == "CU" %}selected{% endif %} value="CU">Cuba</option>
+                    <option {% if item.2 == "CW" %}selected{% endif %} value="CW">Curaçao</option>
+                    <option {% if item.2 == "CY" %}selected{% endif %} value="CY">Cyprus</option>
+                    <option {% if item.2 == "CZ" %}selected{% endif %} value="CZ">Czech Republic</option>
+                    <option {% if item.2 == "DK" %}selected{% endif %} value="DK">Denmark</option>
+                    <option {% if item.2 == "DJ" %}selected{% endif %} value="DJ">Djibouti</option>
+                    <option {% if item.2 == "DM" %}selected{% endif %} value="DM">Dominica</option>
+                    <option {% if item.2 == "DO" %}selected{% endif %} value="DO">Dominican Republic</option>
+                    <option {% if item.2 == "EC" %}selected{% endif %} value="EC">Ecuador</option>
+                    <option {% if item.2 == "EG" %}selected{% endif %} value="EG">Egypt</option>
+                    <option {% if item.2 == "SV" %}selected{% endif %} value="SV">El Salvador</option>
+                    <option {% if item.2 == "GQ" %}selected{% endif %} value="GQ">Equatorial Guinea</option>
+                    <option {% if item.2 == "ER" %}selected{% endif %} value="ER">Eritrea</option>
+                    <option {% if item.2 == "EE" %}selected{% endif %} value="EE">Estonia</option>
+                    <option {% if item.2 == "ET" %}selected{% endif %} value="ET">Ethiopia</option>
+                    <option {% if item.2 == "FK" %}selected{% endif %} value="FK">Falkland Islands (Malvinas)</option>
+                    <option {% if item.2 == "FO" %}selected{% endif %} value="FO">Faroe Islands</option>
+                    <option {% if item.2 == "FJ" %}selected{% endif %} value="FJ">Fiji</option>
+                    <option {% if item.2 == "FI" %}selected{% endif %} value="FI">Finland</option>
+                    <option {% if item.2 == "FR" %}selected{% endif %} value="FR">France</option>
+                    <option {% if item.2 == "GF" %}selected{% endif %} value="GF">French Guiana</option>
+                    <option {% if item.2 == "PF" %}selected{% endif %} value="PF">French Polynesia</option>
+                    <option {% if item.2 == "TF" %}selected{% endif %} value="TF">French Southern Territories</option>
+                    <option {% if item.2 == "GA" %}selected{% endif %} value="GA">Gabon</option>
+                    <option {% if item.2 == "GM" %}selected{% endif %} value="GM">Gambia</option>
+                    <option {% if item.2 == "GE" %}selected{% endif %} value="GE">Georgia</option>
+                    <option {% if item.2 == "DE" %}selected{% endif %} value="DE">Germany</option>
+                    <option {% if item.2 == "GH" %}selected{% endif %} value="GH">Ghana</option>
+                    <option {% if item.2 == "GI" %}selected{% endif %} value="GI">Gibraltar</option>
+                    <option {% if item.2 == "GR" %}selected{% endif %} value="GR">Greece</option>
+                    <option {% if item.2 == "GL" %}selected{% endif %} value="GL">Greenland</option>
+                    <option {% if item.2 == "GD" %}selected{% endif %} value="GD">Grenada</option>
+                    <option {% if item.2 == "GP" %}selected{% endif %} value="GP">Guadeloupe</option>
+                    <option {% if item.2 == "GU" %}selected{% endif %} value="GU">Guam</option>
+                    <option {% if item.2 == "GT" %}selected{% endif %} value="GT">Guatemala</option>
+                    <option {% if item.2 == "GG" %}selected{% endif %} value="GG">Guernsey</option>
+                    <option {% if item.2 == "GN" %}selected{% endif %} value="GN">Guinea</option>
+                    <option {% if item.2 == "GW" %}selected{% endif %} value="GW">Guinea-Bissau</option>
+                    <option {% if item.2 == "GY" %}selected{% endif %} value="GY">Guyana</option>
+                    <option {% if item.2 == "HT" %}selected{% endif %} value="HT">Haiti</option>
+                    <option {% if item.2 == "HM" %}selected{% endif %} value="HM">Heard Island and McDonald Islands</option>
+                    <option {% if item.2 == "VA" %}selected{% endif %} value="VA">Holy See (Vatican City State)</option>
+                    <option {% if item.2 == "HN" %}selected{% endif %} value="HN">Honduras</option>
+                    <option {% if item.2 == "HK" %}selected{% endif %} value="HK">Hong Kong</option>
+                    <option {% if item.2 == "HU" %}selected{% endif %} value="HU">Hungary</option>
+                    <option {% if item.2 == "IS" %}selected{% endif %} value="IS">Iceland</option>
+                    <option {% if item.2 == "IN" %}selected{% endif %} value="IN">India</option>
+                    <option {% if item.2 == "ID" %}selected{% endif %} value="ID">Indonesia</option>
+                    <option {% if item.2 == "IR" %}selected{% endif %} value="IR">Iran, Islamic Republic of</option>
+                    <option {% if item.2 == "IQ" %}selected{% endif %} value="IQ">Iraq</option>
+                    <option {% if item.2 == "IE" %}selected{% endif %} value="IE">Ireland</option>
+                    <option {% if item.2 == "IM" %}selected{% endif %} value="IM">Isle of Man</option>
+                    <option {% if item.2 == "IL" %}selected{% endif %} value="IL">Israel</option>
+                    <option {% if item.2 == "IT" %}selected{% endif %} value="IT">Italy</option>
+                    <option {% if item.2 == "JM" %}selected{% endif %} value="JM">Jamaica</option>
+                    <option {% if item.2 == "JP" %}selected{% endif %} value="JP">Japan</option>
+                    <option {% if item.2 == "JE" %}selected{% endif %} value="JE">Jersey</option>
+                    <option {% if item.2 == "JO" %}selected{% endif %} value="JO">Jordan</option>
+                    <option {% if item.2 == "KZ" %}selected{% endif %} value="KZ">Kazakhstan</option>
+                    <option {% if item.2 == "KE" %}selected{% endif %} value="KE">Kenya</option>
+                    <option {% if item.2 == "KI" %}selected{% endif %} value="KI">Kiribati</option>
+                    <option {% if item.2 == "KP" %}selected{% endif %} value="KP">Korea, Democratic People's Republic of</option>
+                    <option {% if item.2 == "KR" %}selected{% endif %} value="KR">Korea, Republic of</option>
+                    <option {% if item.2 == "KW" %}selected{% endif %} value="KW">Kuwait</option>
+                    <option {% if item.2 == "KG" %}selected{% endif %} value="KG">Kyrgyzstan</option>
+                    <option {% if item.2 == "LA" %}selected{% endif %} value="LA">Lao People's Democratic Republic</option>
+                    <option {% if item.2 == "LV" %}selected{% endif %} value="LV">Latvia</option>
+                    <option {% if item.2 == "LB" %}selected{% endif %} value="LB">Lebanon</option>
+                    <option {% if item.2 == "LS" %}selected{% endif %} value="LS">Lesotho</option>
+                    <option {% if item.2 == "LR" %}selected{% endif %} value="LR">Liberia</option>
+                    <option {% if item.2 == "LY" %}selected{% endif %} value="LY">Libya</option>
+                    <option {% if item.2 == "LI" %}selected{% endif %} value="LI">Liechtenstein</option>
+                    <option {% if item.2 == "LT" %}selected{% endif %} value="LT">Lithuania</option>
+                    <option {% if item.2 == "LU" %}selected{% endif %} value="LU">Luxembourg</option>
+                    <option {% if item.2 == "MO" %}selected{% endif %} value="MO">Macao</option>
+                    <option {% if item.2 == "MK" %}selected{% endif %} value="MK">Macedonia, the former Yugoslav Republic of</option>
+                    <option {% if item.2 == "MG" %}selected{% endif %} value="MG">Madagascar</option>
+                    <option {% if item.2 == "MW" %}selected{% endif %} value="MW">Malawi</option>
+                    <option {% if item.2 == "MY" %}selected{% endif %} value="MY">Malaysia</option>
+                    <option {% if item.2 == "MV" %}selected{% endif %} value="MV">Maldives</option>
+                    <option {% if item.2 == "ML" %}selected{% endif %} value="ML">Mali</option>
+                    <option {% if item.2 == "MT" %}selected{% endif %} value="MT">Malta</option>
+                    <option {% if item.2 == "MH" %}selected{% endif %} value="MH">Marshall Islands</option>
+                    <option {% if item.2 == "MQ" %}selected{% endif %} value="MQ">Martinique</option>
+                    <option {% if item.2 == "MR" %}selected{% endif %} value="MR">Mauritania</option>
+                    <option {% if item.2 == "MU" %}selected{% endif %} value="MU">Mauritius</option>
+                    <option {% if item.2 == "YT" %}selected{% endif %} value="YT">Mayotte</option>
+                    <option {% if item.2 == "MX" %}selected{% endif %} value="MX">Mexico</option>
+                    <option {% if item.2 == "FM" %}selected{% endif %} value="FM">Micronesia, Federated States of</option>
+                    <option {% if item.2 == "MD" %}selected{% endif %} value="MD">Moldova, Republic of</option>
+                    <option {% if item.2 == "MC" %}selected{% endif %} value="MC">Monaco</option>
+                    <option {% if item.2 == "MN" %}selected{% endif %} value="MN">Mongolia</option>
+                    <option {% if item.2 == "ME" %}selected{% endif %} value="ME">Montenegro</option>
+                    <option {% if item.2 == "MS" %}selected{% endif %} value="MS">Montserrat</option>
+                    <option {% if item.2 == "MA" %}selected{% endif %} value="MA">Morocco</option>
+                    <option {% if item.2 == "MZ" %}selected{% endif %} value="MZ">Mozambique</option>
+                    <option {% if item.2 == "MM" %}selected{% endif %} value="MM">Myanmar</option>
+                    <option {% if item.2 == "NA" %}selected{% endif %} value="NA">Namibia</option>
+                    <option {% if item.2 == "NR" %}selected{% endif %} value="NR">Nauru</option>
+                    <option {% if item.2 == "NP" %}selected{% endif %} value="NP">Nepal</option>
+                    <option {% if item.2 == "NL" %}selected{% endif %} value="NL">Netherlands</option>
+                    <option {% if item.2 == "NC" %}selected{% endif %} value="NC">New Caledonia</option>
+                    <option {% if item.2 == "NZ" %}selected{% endif %} value="NZ">New Zealand</option>
+                    <option {% if item.2 == "NI" %}selected{% endif %} value="NI">Nicaragua</option>
+                    <option {% if item.2 == "NE" %}selected{% endif %} value="NE">Niger</option>
+                    <option {% if item.2 == "NG" %}selected{% endif %} value="NG">Nigeria</option>
+                    <option {% if item.2 == "NU" %}selected{% endif %} value="NU">Niue</option>
+                    <option {% if item.2 == "NF" %}selected{% endif %} value="NF">Norfolk Island</option>
+                    <option {% if item.2 == "MP" %}selected{% endif %} value="MP">Northern Mariana Islands</option>
+                    <option {% if item.2 == "NO" %}selected{% endif %} value="NO">Norway</option>
+                    <option {% if item.2 == "OM" %}selected{% endif %} value="OM">Oman</option>
+                    <option {% if item.2 == "PK" %}selected{% endif %} value="PK">Pakistan</option>
+                    <option {% if item.2 == "PW" %}selected{% endif %} value="PW">Palau</option>
+                    <option {% if item.2 == "PS" %}selected{% endif %} value="PS">Palestinian Territory, Occupied</option>
+                    <option {% if item.2 == "PA" %}selected{% endif %} value="PA">Panama</option>
+                    <option {% if item.2 == "PG" %}selected{% endif %} value="PG">Papua New Guinea</option>
+                    <option {% if item.2 == "PY" %}selected{% endif %} value="PY">Paraguay</option>
+                    <option {% if item.2 == "PE" %}selected{% endif %} value="PE">Peru</option>
+                    <option {% if item.2 == "PH" %}selected{% endif %} value="PH">Philippines</option>
+                    <option {% if item.2 == "PN" %}selected{% endif %} value="PN">Pitcairn</option>
+                    <option {% if item.2 == "PL" %}selected{% endif %} value="PL">Poland</option>
+                    <option {% if item.2 == "PT" %}selected{% endif %} value="PT">Portugal</option>
+                    <option {% if item.2 == "PR" %}selected{% endif %} value="PR">Puerto Rico</option>
+                    <option {% if item.2 == "QA" %}selected{% endif %} value="QA">Qatar</option>
+                    <option {% if item.2 == "RE" %}selected{% endif %} value="RE">Réunion</option>
+                    <option {% if item.2 == "RO" %}selected{% endif %} value="RO">Romania</option>
+                    <option {% if item.2 == "RU" %}selected{% endif %} value="RU">Russian Federation</option>
+                    <option {% if item.2 == "RW" %}selected{% endif %} value="RW">Rwanda</option>
+                    <option {% if item.2 == "BL" %}selected{% endif %} value="BL">Saint Barthélemy</option>
+                    <option {% if item.2 == "SH" %}selected{% endif %} value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
+                    <option {% if item.2 == "KN" %}selected{% endif %} value="KN">Saint Kitts and Nevis</option>
+                    <option {% if item.2 == "LC" %}selected{% endif %} value="LC">Saint Lucia</option>
+                    <option {% if item.2 == "MF" %}selected{% endif %} value="MF">Saint Martin (French part)</option>
+                    <option {% if item.2 == "PM" %}selected{% endif %} value="PM">Saint Pierre and Miquelon</option>
+                    <option {% if item.2 == "VC" %}selected{% endif %} value="VC">Saint Vincent and the Grenadines</option>
+                    <option {% if item.2 == "WS" %}selected{% endif %} value="WS">Samoa</option>
+                    <option {% if item.2 == "SM" %}selected{% endif %} value="SM">San Marino</option>
+                    <option {% if item.2 == "ST" %}selected{% endif %} value="ST">Sao Tome and Principe</option>
+                    <option {% if item.2 == "SA" %}selected{% endif %} value="SA">Saudi Arabia</option>
+                    <option {% if item.2 == "SN" %}selected{% endif %} value="SN">Senegal</option>
+                    <option {% if item.2 == "RS" %}selected{% endif %} value="RS">Serbia</option>
+                    <option {% if item.2 == "SC" %}selected{% endif %} value="SC">Seychelles</option>
+                    <option {% if item.2 == "SL" %}selected{% endif %} value="SL">Sierra Leone</option>
+                    <option {% if item.2 == "SG" %}selected{% endif %} value="SG">Singapore</option>
+                    <option {% if item.2 == "SX" %}selected{% endif %} value="SX">Sint Maarten (Dutch part)</option>
+                    <option {% if item.2 == "SK" %}selected{% endif %} value="SK">Slovakia</option>
+                    <option {% if item.2 == "SI" %}selected{% endif %} value="SI">Slovenia</option>
+                    <option {% if item.2 == "SB" %}selected{% endif %} value="SB">Solomon Islands</option>
+                    <option {% if item.2 == "SO" %}selected{% endif %} value="SO">Somalia</option>
+                    <option {% if item.2 == "ZA" %}selected{% endif %} value="ZA">South Africa</option>
+                    <option {% if item.2 == "GS" %}selected{% endif %} value="GS">South Georgia and the South Sandwich Islands</option>
+                    <option {% if item.2 == "SS" %}selected{% endif %} value="SS">South Sudan</option>
+                    <option {% if item.2 == "ES" %}selected{% endif %} value="ES">Spain</option>
+                    <option {% if item.2 == "LK" %}selected{% endif %} value="LK">Sri Lanka</option>
+                    <option {% if item.2 == "SD" %}selected{% endif %} value="SD">Sudan</option>
+                    <option {% if item.2 == "SR" %}selected{% endif %} value="SR">Suriname</option>
+                    <option {% if item.2 == "SJ" %}selected{% endif %} value="SJ">Svalbard and Jan Mayen</option>
+                    <option {% if item.2 == "SZ" %}selected{% endif %} value="SZ">Swaziland</option>
+                    <option {% if item.2 == "SE" %}selected{% endif %} value="SE">Sweden</option>
+                    <option {% if item.2 == "CH" %}selected{% endif %} value="CH">Switzerland</option>
+                    <option {% if item.2 == "SY" %}selected{% endif %} value="SY">Syrian Arab Republic</option>
+                    <option {% if item.2 == "TW" %}selected{% endif %} value="TW">Taiwan, Province of China</option>
+                    <option {% if item.2 == "TJ" %}selected{% endif %} value="TJ">Tajikistan</option>
+                    <option {% if item.2 == "TZ" %}selected{% endif %} value="TZ">Tanzania, United Republic of</option>
+                    <option {% if item.2 == "TH" %}selected{% endif %} value="TH">Thailand</option>
+                    <option {% if item.2 == "TL" %}selected{% endif %} value="TL">Timor-Leste</option>
+                    <option {% if item.2 == "TG" %}selected{% endif %} value="TG">Togo</option>
+                    <option {% if item.2 == "TK" %}selected{% endif %} value="TK">Tokelau</option>
+                    <option {% if item.2 == "TO" %}selected{% endif %} value="TO">Tonga</option>
+                    <option {% if item.2 == "TT" %}selected{% endif %} value="TT">Trinidad and Tobago</option>
+                    <option {% if item.2 == "TN" %}selected{% endif %} value="TN">Tunisia</option>
+                    <option {% if item.2 == "TR" %}selected{% endif %} value="TR">Turkey</option>
+                    <option {% if item.2 == "TM" %}selected{% endif %} value="TM">Turkmenistan</option>
+                    <option {% if item.2 == "TC" %}selected{% endif %} value="TC">Turks and Caicos Islands</option>
+                    <option {% if item.2 == "TV" %}selected{% endif %} value="TV">Tuvalu</option>
+                    <option {% if item.2 == "UG" %}selected{% endif %} value="UG">Uganda</option>
+                    <option {% if item.2 == "UA" %}selected{% endif %} value="UA">Ukraine</option>
+                    <option {% if item.2 == "AE" %}selected{% endif %} value="AE">United Arab Emirates</option>
+                    <option {% if item.2 == "GB" %}selected{% endif %} value="GB">United Kingdom</option>
+                    <option {% if item.2 == "US" %}selected{% endif %} value="US">United States</option>
+                    <option {% if item.2 == "UM" %}selected{% endif %} value="UM">United States Minor Outlying Islands</option>
+                    <option {% if item.2 == "UY" %}selected{% endif %} value="UY">Uruguay</option>
+                    <option {% if item.2 == "UZ" %}selected{% endif %} value="UZ">Uzbekistan</option>
+                    <option {% if item.2 == "VU" %}selected{% endif %} value="VU">Vanuatu</option>
+                    <option {% if item.2 == "VE" %}selected{% endif %} value="VE">Venezuela, Bolivarian Republic of</option>
+                    <option {% if item.2 == "VN" %}selected{% endif %} value="VN">Viet Nam</option>
+                    <option {% if item.2 == "VG" %}selected{% endif %} value="VG">Virgin Islands, British</option>
+                    <option {% if item.2 == "VI" %}selected{% endif %} value="VI">Virgin Islands, U.S.</option>
+                    <option {% if item.2 == "WF" %}selected{% endif %} value="WF">Wallis and Futuna</option>
+                    <option {% if item.2 == "EH" %}selected{% endif %} value="EH">Western Sahara</option>
+                    <option {% if item.2 == "YE" %}selected{% endif %} value="YE">Yemen</option>
+                    <option {% if item.2 == "ZM" %}selected{% endif %} value="ZM">Zambia</option>
+                    <option {% if item.2 == "ZW" %}selected{% endif %} value="ZW">Zimbabwe</option>
+                </select>
+            {% endif %}
+
+            {% if item.0 == 'Date' %}
+                <b>{{ item.1 }}</b>
+                <br>
+                <input  type="text" {% ifequal 'None' item.2 %}placeholder="mm/dd/yyyy" {% else %}value="{{ item.2 }}"{% endifequal %} name="{{ item.1 }}_date" class="datepicker" blank="true">
+            {% endif %}
+
+            {% if item.0 == 'Boolean' %}
+                <b>{{ item.1 }}</b>
+                <br>
+                <input  type="radio" {% ifequal item.2 True %} checked {% endifequal %} name="{{ item.1 }}" value="True">Yes<br>
+                <input  type="radio" {% ifequal item.2 False %} checked {% endifequal %} name="{{ item.1 }}" value="False">No
+            {% endif %}
+
+            {% if item.0 == 'Address' %}
+                <u>{{ item.1 }}</u>
+                <br>
+                <br>
+                <b>Street Name and Number</b>
+                <input type="text" value="{{ item.2 }}"  name="{{ item.1 }}_nameNumber">
+                <br>
+                <br>
+                <b>Apartment No</b>
+                <input type="text" value="{{ item.3 }}" name="{{ item.1 }}_apartmentNo">
+                <br>
+                <br>
+                <b>City:</b>
+                <input type="hidden" value="Chicago" name="{{ item.1 }}_city">
+                Chicago
+                <br>
+                <br>
+                <b>State:</b>
+                <input type="hidden" value="IL" name="{{ item.1 }}_state">
+                Illinois
+                <br>
+                <br>
+                <b>Zip Code</b>
+                <input type="text" value="{{ item.6 }}" name="{{ item.1 }}_zipCode" maxlength="5">
+            {% endif %}
+
+            {% if item.0 == 'Guardian' %}
+                <b><u>{{ item.1 }}</u></b>
+                <br>
+                <br>
+                <b>Name</b>
+                <input type="text" value="{{ item.2 }}" name="{{ item.1 }}_name">
+                <br>
+                <br>
+                <b>Relationship to student</b>
+                <input type="text" value="{{ item.3 }}" name="{{ item.1 }}_relationship">
+                <br>
+                <br>
+                <b>Select all that apply</b> <br>
+                <input type="checkbox" name="{{ item.1 }}_checks" {% ifequal item.4 True %}checked{% endifequal %} value="livesWith">Lives with the student<br>
+                <input type="checkbox" name="{{ item.1 }}_checks" {% ifequal item.5 True %}checked{% endifequal %} value="getsMailings">Gets mailings for the student<br>
+                <input type="checkbox" name="{{ item.1 }}_checks" {% ifequal item.6 True %}checked{% endifequal %} value="emergency">Can be contacted in case of emergency<br>
+                <input type="checkbox" name="{{ item.1 }}_checks" {% ifequal item.7 True %}checked{% endifequal %} value="permissionToPickup">Has permission to pick up the student<br>
+                <br>
+                <br>
+                <u>Home address</u>
+                <br>
+                <div label="Home Address">
+                    <b>Street Name and Number</b>
+                    <input type="text" value="{{ item.8 }}"  name="{{ item.1 }}_nameNumber">
+                    <br>
+                    <br>
+                    <b>Apartment No</b>
+                    <input type="text" value="{{ item.9 }}" name="{{ item.1 }}_apartmentNo">
+                    <br>
+                    <br>
+                    <b>City:</b>
+                    <input type="hidden" value="{{ item.10 }}" name="{{ item.1 }}_city">
+                    Chicago
+                    <br>
+                    <br>
+                    <b>State:</b>
+                    <input type="hidden" value="IL" name="{{ item.1 }}_state">
+                    Illinois
+
+                    <br>
+                    <br>
+                    <b>Zip Code</b>
+                    <input type="text" value="{{ item.12 }}" name="{{ item.1 }}_zipCode">
+                </div>
+                <br>
+                <br>
+                <b>Home telephone number</b>
+                <input type="tel" name="{{ item.1 }}_homePhone" value="{{ item.13 }}">
+                <br>
+                <br>
+                <b>Cell phone number</b>
+                <input type="tel" name="{{ item.1 }}_cellPhone" value="{{ item.14 }}">
+                <br>
+                <br>
+                <b>Email address</b>
+                <input type="email" name="{{ item.1 }}_email" value="{{ item.15 }}">
+                <br>
+                <br>
+                <b>Name of Employer</b>
+                <input type="text" name="{{ item.1 }}_employer" value="{{ item.16 }}">
+                <br>
+                <br>
+                <b>Work phone number</b>
+                <input type="tel" value="{{ item.17 }}" name="{{ item.1 }}_workPhone">
+                <br>
+                <br>
+                <b>Preferred Communication Language</b>
+                <input type="text" value="{{ item.18 }}" name="{{ item.1 }}_commLang">
+            {% endif %}
+
+            {% if item.0 == 'Number' %}
+                <b>{{ item.2 }} </b><br>
+                <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="{{ item.1 }}" value="{{ item.3 }}" name="{{ item.2 }}">
+            {% endif %}
+
+            {% if item.0 == 'Title' %}
+                <b><u>{{ item.1 }}</u></b>
+            {% endif %}
+
+            {% if item.0 == 'Verification Checkbox' %}
+                <label>{{ item.1 }}</label>
+                <br>
+                <input type="checkbox" {% ifequal item.2 True %}checked{% endifequal %} name="{{ item.1 }}_checkBox">
+            {% endif %}
+
+            <br>
+            <br>
+        {% endfor %}
+
+        <input formnovalidate type="submit" value="Save and Continue">
+        <br>
+        <br>
+        <br>
+    </form>
+        </div>
+    </div>
+</body>
+</html>

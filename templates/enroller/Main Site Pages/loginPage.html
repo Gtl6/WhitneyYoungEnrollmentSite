@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/enroller/LoginPage.css" />
+    <meta charset="UTF-8">
+    <title>WY Enrollment</title>
+    <link rel="icon" href="/static/enroller/favicon.jpg">
+</head>
+<body>
+    <div class="page">
+        <div class="literallyJustADownPusher"></div>
+        <div class="logo">
+            <img src="/static/enroller/DolphinsLogo.png"/>
+        </div>
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <div class="mainContent">
+                <label><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="uname" required>
+                <br>
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+                <br>
+                <input type="submit" value="Login">
+                <a href="/registrationPage">Activate my account</a>
+                <a href="/forgotPassword">Forgot your password?</a>
+                {% if errorMessage %}<p><strong>{{ errorMessage }}</strong></p>{% endif %}
+            </div>
+       </form>
+    </div>
+</body>
+</html>

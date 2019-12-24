@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    Would you like to lock or unlock all accounts?
+    <br>
+    <br>
+    <a href="{% url 'lockAll' %}"><button>Lock</button></a>
+    <a href="{% url 'unlockAll' %}"><button>Unlock</button></a>
+    <br>
+    <br>
+    Or <a href="{% url 'adminMain' %}">click here</a> to return to the main admin page.
+</body>
+</html>

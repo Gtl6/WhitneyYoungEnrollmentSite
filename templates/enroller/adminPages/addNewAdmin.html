@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% if errorMessage %}
+    {{ errorMessage }}
+        <br>
+        <br>
+    {% endif %}
+    <b><u>Create the admin account below</u></b>
+    <br>
+    <br>
+
+    <form action="{% url 'checkAdminInfo' %}" method="post">
+            {% csrf_token %}
+            <div class="kidCreator">
+                <label><b>Username</b></label>
+                <input type="text" name="usn" required>
+                <br>
+                <br>
+                <label><b>Password</b></label>
+                <input type="password" name="pwd" required>
+                <br>
+                <br>
+                <label><b>Re-enter password</b></label>
+                <input type="password" name="pwdConf" required>
+                <br>
+                <br>
+                <label><b>Contact Email</b></label>
+                <input type="email" name="email" required>
+                <br>
+                <br>
+                <input type="submit" value="Add Admin"/>
+            </div>
+       </form>
+</body>
+</html>

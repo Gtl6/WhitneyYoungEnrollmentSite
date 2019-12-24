@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/enroller/GeneralPage.css" />
+    <meta charset="UTF-8">
+    <title>WY Enrollment</title>
+    <link rel="icon" href="/static/enroller/favicon.jpg">
+</head>
+<body>
+    <div class="page">
+        <div class="mainContent">
+            Welcome to your application! Your forms can be found below.<br>
+            If a survey has a green light next to it, it is completed.<br>
+            Otherwise, there is still information needed to complete it.<br>
+            <br>
+            <table>
+                <tr>
+                    <td><img src="/static/enroller/{{ mainsurveyColor }}.png" height="25" width="25"></td>
+                    <td><a href="/mainSurveyPage">Step 1: Main Survey</a></td>
+                </tr>
+                <tr>
+                    <td><img src="/static/enroller/{{ contactsurveyColor }}.png" height="25" width="25"></td>
+                    <td><a href="/contactSurveyForm">Step 2: Contact Survey</a></td>
+                </tr>
+                <tr>
+                    <td><img src="/static/enroller/{{ homelanguagesurveyColor }}.png" height="25" width="25"></td>
+                    <td><a href="/homeLanguageSurvey">Step 3: Home Language Survey</a></td>
+                </tr>
+                <tr>
+                    <td><img src="/static/enroller/{{ emergencyandhealthinfoColor }}.png" height="25" width="25"></td>
+                    <td><a href="/emergencyAndHealthSurvey">Step 4: Emergency Contact Form and Health Survey</a></td>
+                </tr>
+                <tr>
+                    <td><img src="/static/enroller/{{ mediaconsentformColor }}.png" height="25" width="25"></td>
+                    <td><a href="/mediaConsentForm">Step 5: Media Consent Form</a></td>
+                </tr>
+                <tr>
+                    <td><img src="/static/enroller/{{ previousschoolsurveyColor }}.png" height="25" width="25"></td>
+                    <td><a href="/previousSchoolSurveyPage">Step 6: Previous School Survey</a></td>
+                </tr>
+                <tr>
+                    <td><img src="/static/enroller/{{ raceandethnicitysurveyColor }}.png" height="25" width="25"></td>
+                    <td><a href="/raceAndEthnicitySurvey">Step 7: Race and Ethnicity Survey</a></td>
+                </tr>
+            </table>
+            </div>
+        </div>
+</body>
+</html>

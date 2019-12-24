@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <b><u>Import a CSV File with Mr Soto's specifications</u></b>
+    <br>
+    <br>
+    Input type: CSV<br>
+    No headers<br>
+    ID number, division, name, gender, entry_grade, race, address, city, state<br>
+    ID number is an 8-character number<br>
+    Division Number is a 3-character number, possibly prepended by a single letter<br>
+    name is in the format "last_name, first_name"<br>
+    Gender is "M" or "F", and is the gender on the child's birth certificate<br>
+    Entry_Grade is the grade the student is applying for<br>
+    Race is one of {'American Indian', 'Alaska Native', 'Asian', 'Black or African American', 'Hispanic or Latino', 'Mixed Race', 'Native Hawaiian or Other Pacific Islander', 'White'}<br>
+    Address is in the form "House_number direction street_name # apt_number", where everything after the pound sign is removed if there is no apt number<br>
+    City is the city<br>
+    State is the state<br>
+    <form action="{% url 'addThoseKids' %}" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+        <input type="file" name="theFile">
+        <br>
+        <br>
+        <input type="submit" value="Add Students">
+        <br>
+        <br>
+        After you submit the students, wait until you download a csv file. That will be the document you need that
+        includes the student's name, as well as the student's activation code.
+    </form>
+    <br>
+    <a href="{% url 'adminMain' %}">Click here</a> to return to the main admin page.
+</body>
+</html>

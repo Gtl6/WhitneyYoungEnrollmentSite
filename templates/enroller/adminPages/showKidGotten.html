@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    Would you like to unlock the account of {{ kidName }}?
+    <br>
+    <br>
+    <a href="{% url 'lockOneKid' %}"><button>Lock</button></a>
+    <a href="{% url 'unlockOneKid' %}"><button>Unlock</button></a>
+</body>
+</html>

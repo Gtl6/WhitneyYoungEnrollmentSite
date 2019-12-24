@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static from staticfiles %}
+    <link rel='shortcut icon' href='{% static 'enroller/favicon.jpg' %}' type='image'/>
+    <meta charset="UTF-8">
+    <title>WY Enrollment</title>
+    <link rel="icon" href="/static/enroller/favicon.jpg">
+    <link rel="stylesheet" type="text/css" href="/static/enroller/GeneralPage.css" />
+</head>
+<body>
+    <div class="mainContent">
+    <form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+        <div class="container">
+        <table>
+            <tr>
+                <td><label><b>Email</b></label></td>
+                <td><input type="email" placeholder="Email Address" name="uName" required></td>
+            </tr>
+            <tr>
+                <td><label><b>Password</b></label></td>
+                <td><input type="password" placeholder="Password" name="psw" required></td>
+            </tr>
+            <tr>
+                <td><label><b>Confirm Password</b></label></td>
+                <td><input type="password" placeholder="Password" name="pswConf" required></td>
+            </tr>
+            <tr>
+                <td><label><b>Registration Password</b></label></td>
+                <td><input type="text" placeholder="Registration Key" name="reg" required></td>
+            </tr>
+
+        </table>
+            {% if errorMessage %}<p><strong>{{ errorMessage }}</strong></p>{% endif %}
+            <input type="submit" value="Register" />
+        </div>
+    </form>
+    <br>
+    <a href="/">Click here</a> to return to the main page.
+    </div>
+</body>
+</html>

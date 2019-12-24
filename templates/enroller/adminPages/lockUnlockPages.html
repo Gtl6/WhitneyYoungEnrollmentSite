@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="{% url 'checkForKid' %}" method="post">
+            {% csrf_token %}
+            <div class="loginHolder">
+                <label><b>ID number</b></label>
+                <br>
+                <input type="text" placeholder="Id Number" name="idNum" required>
+                <br>
+                <br>
+                <input type="submit" value="Find Kid">
+                {% if errorMessage %}<p><strong>{{ errorMessage }}</strong></p>{% endif %}
+            </div>
+    </form>
+    <br>
+    Or <a href="{% url 'adminMain' %}">click here</a> to return to the main admin page.
+</body>
+</html>
