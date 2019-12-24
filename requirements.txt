@@ -17,7 +17,7 @@ pathspec==0.3.4
 psycopg2==2.6.2
 pycparser==2.17
 python-dateutil==2.5.3
-PyYAML==3.12
+PyYAML==5.1
 requests==2.9.1
 semantic-version==2.5.0
 six==1.10.0
