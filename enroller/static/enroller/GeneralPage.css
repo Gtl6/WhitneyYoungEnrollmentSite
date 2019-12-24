@@ -1,0 +1,22 @@
+.page{
+    margin: 0 auto;
+    width: 50%;
+    /* bring your own prefixes */
+    height: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+body{
+    background-color:#0B156A;
+}
+
+.mainContent {
+    background-color:whitesmoke;
+    padding: 15px;
+}
