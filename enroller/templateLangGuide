@@ -1,0 +1,53 @@
+=========== ======== ====    ==== ||====|| ||          //\\     ||\\    || ==========
+    ||      ||       || \\  // || ||    || ||         //  \\    || \\   || ||
+    ||      ||====   ||  \\//  || ||=====  ||        //====\\   ||  \\  || ||   =====
+    ||      ||       ||        || ||       ||       //      \\  ||   \\ || ||      ||
+    ||      ======== ||        || ||       ||===== //        \\ ||    \\|| ==========
+
+    For the usage of taking form values and generating pages with them, I have created a basic template language.
+Included is the information on the tag values, and what they mean.
+
+After each entry must be included the dbName for later referral, starting with a #
+Note: When naming your prompts, DO NOT use ANY escape characters (', n, t, etc), as they do not allow the tool that
+pushes data to the database to find the database entry. I understand this is limiting, please work around it.
+
+'*a' = Address value to follow (special input form, see below)
+'*b' = Boolean yes/no value to follow (Radio list of 'yes/no value'
+'*c' = Country value to follow (Select list with all countries included)
+'*d' = Date value to follow (Date prompt input)
+'*g' = Guardian Contact information to follow (special input form, see below)
+'*n' = Number input to follow, next tells len of number, then the name of the field
+'*t' = Title to follow
+'*ut' = Underlined Title to follow
+'*v' = verification checkbox to follow
+
+If a non-specified entry is followed by a list, it will become a Radio list
+
+    If a non-specified entry is followed by another non-specified entry, a tag, or the end of the list, it will
+register as a text-input box
+
+An Address is made up of the following prompts:
+    Street Number and Name, text input
+    Apartment Number, number input
+    City, text input
+    State, dropdown list
+    Zipcode, number input of fixed len 5
+
+A Guardian is made up of the following prompts:
+    Name, text input
+    Relationship, text input
+    List of options to select, can select all (checkbox list):
+        Lives with student
+        Gets mailings for student
+        Can contact in case of emergency
+        Has permission to pick up student
+    Home Address of the guardian
+    Home Phone #, phone number input
+    Cell Phone #, phone number input
+    Email Address, text input
+    Name of Employer, text input
+    Work Phone #, phone number input
+    Communication Language, text input
+
+If you need to expand the template language, just add an entry for the tag, and make sure that it has a description.
+Also try to keep the entries alphabetical, it's just easier to refer to it that way
